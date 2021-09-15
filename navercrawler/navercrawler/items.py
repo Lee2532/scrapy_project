@@ -8,6 +8,7 @@ import scrapy
 
 class NavercrawlerItem(scrapy.Item):
     # define the fields for your item here like:
-    title = scrapy.Field()
-    tag = scrapy.Field()
-    author = scrapy.Field()
+    title = scrapy.Field() #기사 제목
+    preview = scrapy.Field() # 미리보기
+    author = scrapy.Field() #언론사
+    target_url = scrapy.Field() # 기사링크
