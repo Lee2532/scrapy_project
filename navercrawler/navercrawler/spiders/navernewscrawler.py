@@ -14,7 +14,6 @@ class ToScrapeCSSSpider(scrapy.Spider):
             yield scrapy.Request(url=target_url, callback=self.parse)
 
     def parse(self, response):
-
         for data in response.css("#main_content > div.list_body.newsflash_body > ul.type06_headline > li"):
             title = data.css(" dl > dd > span.lede::text").get()
             author = data.css("dl > dd > span.writing::text").get()
