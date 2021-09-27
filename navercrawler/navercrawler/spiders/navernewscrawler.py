@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from navercrawler.items import NavercrawlerItem, NaverCrawlerDataClasee, CustomItem
+from navercrawler.items import NavercrawlerItem, CustomItem
 
-class ToScrapeCSSSpider(scrapy.Spider):
+class NaverNewsCrawler(scrapy.Spider):
     name = "navernews"
     start_urls = [
         'https://news.naver.com/main/list.naver?mode=LSD&mid=sec&sid1=001',
@@ -29,9 +29,24 @@ class ToScrapeCSSSpider(scrapy.Spider):
             yield item
             yield scrapy.Request(target_url, callback=self.parse_post)
 
+    ## use dataclass
+    # def parse_post(self, response):
+    #     title = response.css('h3#articleTitle::text').get()
+    #     target_url = response.url
+    #
+    #     yield CustomItem(title, target_url)
 
     def parse_post(self, response):
+        customItem= CustomItem()
         title = response.css('h3#articleTitle::text').get()
         target_url = response.url
+        customItem['title'] = title
+        customItem['target_url'] = target_url
+        yield customItem
+        self.third_parser('테스트')
+        # yield scrapy.Request(target_url, callback=self.third_parser, cb_kwargs=dict(test=1))
 
-        yield CustomItem(title, target_url)
+
+
+    def third_parser(self, test):
+        print(test)

@@ -62,9 +62,9 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'navercrawler.pipelines.NavercrawlerPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'navercrawler.pipelines.NavercrawlerPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -92,3 +92,7 @@ FEED_EXPORT_ENCODING = 'utf-8'
 DEFAULT_REQUEST_HEADERS = {
     'Referer': 'https://news.naver.com/'
 }
+
+# LOG_LEVEL = 'INFO'
+#로그 출력 제거
+LOG_ENABLED=False

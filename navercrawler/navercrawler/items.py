@@ -12,9 +12,22 @@ class NavercrawlerItem(scrapy.Item):
     target_url = scrapy.Field() # 기사링크
 
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
-@dataclass
-class CustomItem:
-    title: str
-    target_url: str
+# @dataclass
+# class CustomItem:
+#     title: str
+#     target_url: str
+
+
+class CustomItem(scrapy.Item):
+    title = scrapy.Field()
+    target_url =scrapy.Field()
+
+
+from typing import Optional
+
+# @dataclass
+# class InventoryItem:
+#     title: Optional[str] = field(default=None)
+#     target_url: Optional[str] = field(default=None)
